@@ -10,7 +10,7 @@ const MainHeader = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link href="/">News</Link>
+                        <Link href="/news">News</Link>
                     </li>
                 </ul>
             </nav>
