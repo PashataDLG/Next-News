@@ -3,14 +3,18 @@ import Link from "next/link";
 
 const MainHeader = () => {
     return (
-        <>
-            <Link href="/">
-                Home
-            </Link>
-            <Link href="/news">
-                News
-            </Link>
-        </>
+       <header id="main-header">
+            <div id="logo">
+                <Link href="/">NextNews</Link>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <Link href="/">News</Link>
+                    </li>
+                </ul>
+            </nav>
+       </header>
     );
 };
 
