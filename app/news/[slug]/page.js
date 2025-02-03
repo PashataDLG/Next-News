@@ -1,25 +1,29 @@
 import { DUMMY_NEWS } from "@/dummy-news";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
-const NewsDetail = ({ params }) => {
-    const articleSlug = params.slug;
-    const articleItem = DUMMY_NEWS.find(
-        (article) => article.slug === articleSlug
-    );
+const NewsDetail = async ({ params }) => {
+    const newsSlug = params.slug;
+    const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === newsSlug);
 
-    if (!articleItem) {
+    if(!newsItem) {
         notFound();
     }
 
     return (
         <article className="news-article">
             <header>
-                <img src={`/images/news/${articleItem.image}`} alt={articleItem.title} />
-                <h1>{articleItem.title}</h1>
-                <time dateTime={articleItem.date}>{articleItem.date}</time>
+                <Link href={`/news/${newsItem.slug}/image`}>
+                    <img
+                        src={`/images/news/${newsItem.image}`}
+                        alt={newsItem.title}
+                    />
+                </Link>
+                <h1>{newsItem.title}</h1>
+                <time dateTime={newsItem.date}>{newsItem.date}</time>
             </header>
-            <p>{articleItem.content}</p>
+            <p>{newsItem.content}</p>
         </article>
     );
 };
