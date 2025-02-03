@@ -9,8 +9,8 @@ const NewsDetail = async ({ params }) => {
 
     if(!newsItem) {
         notFound();
-    }
-
+    }   
+        
     return (
         <article className="news-article">
             <header>
