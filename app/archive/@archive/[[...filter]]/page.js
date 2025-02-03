@@ -7,7 +7,8 @@ import {
 } from "@/lib/news";
 import Link from "next/link";
 
-export default function FilteredNewsPage({ params }) {
+export default async function FilteredNewsPage(props) {
+    const params = await props.params;
     const filter = params.filter;
 
     let links = getAvailableNewsYears();
