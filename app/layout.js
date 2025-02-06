@@ -1,5 +1,4 @@
 import "./globals.css";
-import ReactQueryProvider from "./providers/ReactQueryProvider";
 
 export const metadata = {
     title: "Next.js Page Routing & Rendering",
@@ -9,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body><ReactQueryProvider>{children}</ReactQueryProvider></body>
+            <body>{children}</body>
         </html>
     );
 }

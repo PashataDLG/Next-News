@@ -1,18 +1,13 @@
-import axios from "axios";
-
 import NewsList from "@/components/news-list";
+import { getAllNews } from "@/lib/news";
 
 const NewsPage = async () => {
-    const response = await axios.get("http://localhost:8080/news");
-
-    if (!response.data) {
-        throw new Error("There was an error fetching the news");
-    }
+    const news = await getAllNews();
 
     return (
         <>
             <h1>News Page</h1>
-            <NewsList news={response.data} />
+            <NewsList news={news} />
         </>
     );
 };
