@@ -1,28 +1,18 @@
-"use client";
+import axios from "axios";
 
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import NewsList from "@/components/news-list";
-import fetchNews from "@/lib/newsApi";
 
-const NewsPage = () => {
-    const { isLoading, isError, data, error } = useQuery({
-        queryKey: ["news"],
-        queryFn: fetchNews,
-    });
+const NewsPage = async () => {
+    const response = await axios.get("http://localhost:8080/news");
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (isError) {
-        return <div>Error: {error.message}</div>;
+    if (!response.data) {
+        throw new Error("There was an error fetching the news");
     }
 
     return (
         <>
             <h1>News Page</h1>
-            <NewsList news={data} />
+            <NewsList news={response.data} />
         </>
     );
 };
